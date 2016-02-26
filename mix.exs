@@ -3,19 +3,19 @@ defmodule KV.Mixfile do
 
   def project do
     [app: :kv,
-     version: "0.0.1",
-     elixir: "~> 1.1",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps]
+    version: "0.0.1",
+    elixir: "~> 1.1",
+    build_embedded: Mix.env == :prod,
+    start_permanent: Mix.env == :prod,
+    deps: deps]
   end
 
   # Configuration for the OTP application
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [],
-     mod: {KV, []}]
+    [applications: [:logger, :cowboy, :plug],
+    mod: {KV, []}]
   end
 
   # Dependencies can be Hex packages:
@@ -28,6 +28,7 @@ defmodule KV.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [{:cowboy, "~> 1.0.0"},
+    {:plug, "~> 1.1"}]
   end
 end
